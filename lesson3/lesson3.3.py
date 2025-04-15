@@ -1,4 +1,4 @@
-list = [1, 2, 3, 4, 5]
+list = [1, 2, 3]
 if len(list) == 0:
     res = [[], []]
 else:
