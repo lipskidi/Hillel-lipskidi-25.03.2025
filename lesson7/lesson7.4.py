@@ -5,4 +5,4 @@ def common_elements():
     return res
 x = {0, 75, 45, 15, 90, 60, 30}
 assert common_elements() == x
-print("Done")
+print("OK")
