@@ -8,15 +8,20 @@ class Rectangle:
     def get_square(self) -> int | float:
         return self.area
 
-    def __eq__(self, other: int | float) -> bool:
-        return self.area == other.area
+    def __eq__(self, other: object) -> bool:
+        if isinstance(other, Rectangle):
+            return self.area == other.area
+        return NotImplemented
 
     def __add__(self, other: "Rectangle") -> "Rectangle":
         new_width = (self.width + other.width + self.height + other.height) / 4
         return Rectangle(new_width, (self.area + other.area) / new_width)
 
-    def __mul__(self, n: int | float) -> "Rectangle":
-        return Rectangle(self.width * n ** 0.5, self.height * n ** 0.5)
+    def __mul__(self, n: float) -> "Rectangle":
+        if not isinstance(n, (int, float)):
+            return NotImplemented
+        factor = n ** 0.5
+        return Rectangle(self.width * factor, self.height * factor)
 
     def __str__(self) -> str:
         return f"Rectangle: width - {self.width}, height - {self.height}"
